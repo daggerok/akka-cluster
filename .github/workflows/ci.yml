@@ -1,13 +1,13 @@
 name: "CI"
 on: [push]
 jobs:
-  play-java-seed:
+  play-java-sbt-example:
     strategy:
       matrix:
         java: [8]
         nodejs: [12]
         os: [ubuntu-latest]
-    name: play-java-seed with java ${{ matrix.java }} on ${{ matrix.os }}
+    name: play-java-sbt-example with java ${{ matrix.java }} on ${{ matrix.os }}
     runs-on: ${{ matrix.os }}
     steps:
       - uses: actions/checkout@v1
@@ -32,9 +32,9 @@ jobs:
           restore-keys: |
             ${{ runner.os }}-maven-
             ${{ runner.os }}-
-      - run: cd $GITHUB_WORKSPACE/prerequisites/play-java-seed && ./sbt clean dist
-      - run: unzip -d $GITHUB_WORKSPACE/prerequisites/play-java-seed/target/app $GITHUB_WORKSPACE/prerequisites/play-java-seed/target/universal/play-java-sbt-example-*.zip
-      - run: cd $GITHUB_WORKSPACE/prerequisites/play-java-seed && ./target/app/play-java-sbt-example-*/bin/play-java-sbt-example -Dplay.http.secret.key=ad31779d4ee49d5ad5162bf1429c32e2e9933f3b &
+      - run: cd $GITHUB_WORKSPACE/prerequisites/play-java-sbt-example && ./sbt clean dist
+      - run: unzip -d $GITHUB_WORKSPACE/prerequisites/play-java-sbt-example/target/app $GITHUB_WORKSPACE/prerequisites/play-java-sbt-example/target/universal/play-java-sbt-example-*.zip
+      - run: cd $GITHUB_WORKSPACE/prerequisites/play-java-sbt-example && ./target/app/play-java-sbt-example-*/bin/play-java-sbt-example -Dplay.http.secret.key=ad31779d4ee49d5ad5162bf1429c32e2e9933f3b &
       - name: Test
         run: |
           ps waux | grep java
