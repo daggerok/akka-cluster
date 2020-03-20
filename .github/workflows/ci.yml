@@ -1,0 +1,29 @@
+name: " CI"
+on: [push]
+jobs:
+  akka-cluster-typed-java-maven-example:
+    strategy:
+      matrix:
+        java: [8]
+        os: [ubuntu-latest]
+    name: akka-cluster-typed-java-maven-example with java ${{ matrix.java }} on ${{ matrix.os }}
+    runs-on: ${{ matrix.os }}
+    steps:
+      - name: Git clone
+        uses: actions/checkout@v1
+      - name: Setup java ${{ matrix.java }}
+        uses: actions/setup-java@v1
+        with:
+          java-version: ${{ matrix.java }}
+      - name: Cache ~/.m2 maven deps
+        uses: actions/cache@v1
+        with:
+          path: ~/.m2
+          key: ${{ runner.os }}-maven-${{ hashFiles('**/pom.xml') }}
+          restore-keys: |
+            ${{ runner.os }}-maven-
+            ${{ runner.os }}-
+      - name: Build
+        run: cd $GITHUB_WORKSPACE/akka-cluster-typed-java-maven-example && ./mvnw
+      - name: Run
+        run: java -jar $GITHUB_WORKSPACE/akka-cluster-typed-java-maven-example/target/*-all.jar
