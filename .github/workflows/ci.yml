@@ -1,29 +1,69 @@
 name: " CI"
 on: [push]
 jobs:
-  akka-cluster-typed-java-maven-example:
+  akka-http-java-maven-example:
     strategy:
       matrix:
         java: [8]
+        nodejs: [12]
         os: [ubuntu-latest]
-    name: akka-cluster-typed-java-maven-example with java ${{ matrix.java }} on ${{ matrix.os }}
+    name: akka-http-java-maven-example with java ${{ matrix.java }} on ${{ matrix.os }}
     runs-on: ${{ matrix.os }}
     steps:
-      - name: Git clone
-        uses: actions/checkout@v1
-      - name: Setup java ${{ matrix.java }}
-        uses: actions/setup-java@v1
+      - uses: actions/checkout@v1
+      - run: command -v http || sudo apt-get install -y httpie
+      - uses: actions/setup-node@v1
+        with:
+          node-version: ${{ matrix.nodejs-version }}
+      - uses: actions/cache@v1
+        with:
+          path: ~/.npm
+          key: ${{ runner.os }}-${{ matrix.os }}-npm-
+          restore-keys: |
+            ${{ runner.os }}-${{ matrix.os }}-npm-
+      - run: command -v wait-port || sudo npm i -g wait-port
+      - uses: actions/setup-java@v1
         with:
           java-version: ${{ matrix.java }}
-      - name: Cache ~/.m2 maven deps
-        uses: actions/cache@v1
+      - uses: actions/cache@v1
         with:
           path: ~/.m2
           key: ${{ runner.os }}-maven-${{ hashFiles('**/pom.xml') }}
           restore-keys: |
             ${{ runner.os }}-maven-
             ${{ runner.os }}-
-      - name: Build
-        run: cd $GITHUB_WORKSPACE/prerequisites/akka-cluster-typed-java-maven-example && ./mvnw
-      - name: Run
-        run: java -jar $GITHUB_WORKSPACE/prerequisites/akka-cluster-typed-java-maven-example/target/*-all.jar
+      - run: cd $GITHUB_WORKSPACE && ./mvnw -f prerequisites/akka-http-java-maven-example
+      - name: Run and test
+        env:
+          CI: true
+        run: java -jar $GITHUB_WORKSPACE/prerequisites/akka-http-java-maven-example/target/*-all.jar &
+      - name: Test
+        run: |
+          env
+          ps
+          ps waux | grep java
+          wait-port 8080
+          http get  :8080/api/hello
+          http post :8080/api/bye
+
+  akka-actor-typed-java-maven-example:
+    strategy:
+      matrix:
+        java: [8]
+        os: [ubuntu-latest]
+    name: akka-actor-typed-java-maven-example with java ${{ matrix.java }} on ${{ matrix.os }}
+    runs-on: ${{ matrix.os }}
+    steps:
+      - uses: actions/checkout@v1
+      - uses: actions/setup-java@v1
+        with:
+          java-version: ${{ matrix.java }}
+      - uses: actions/cache@v1
+        with:
+          path: ~/.m2
+          key: ${{ runner.os }}-maven-${{ hashFiles('**/pom.xml') }}
+          restore-keys: |
+            ${{ runner.os }}-maven-
+            ${{ runner.os }}-
+      - run: cd $GITHUB_WORKSPACE && ./mvnw -f prerequisites/akka-actor-typed-java-maven-example
+      - run: java -jar $GITHUB_WORKSPACE/prerequisites/akka-actor-typed-java-maven-example/target/*-all.jar

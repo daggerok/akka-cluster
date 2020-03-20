@@ -5,6 +5,8 @@ Status: IN PROGRESS...
 
 ## resources
 
+* https://doc.akka.io/docs/akka/current/additional/books.html
+* https://doc.akka.io/docs/akka/current/project/examples.html
 * https://doc.akka.io/docs/akka/current/typed/actors.html
 * https://doc.akka.io/docs/akka/2.6/project/migration-guide-2.5.x-2.6.x.html#materializer-changes
 * [YouTube: What's New In Akka 2.6?](https://www.youtube.com/watch?v=ZWIryjFKcXo)
