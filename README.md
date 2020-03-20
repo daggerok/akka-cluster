@@ -5,6 +5,7 @@ Status: IN PROGRESS...
 
 ## resources
 
+* [Start from Lightbend example apps](https://developer.lightbend.com/start/)
 * [Akka books and videos](https://doc.akka.io/docs/akka/current/additional/books.html)
 * [Akka examples projects](https://doc.akka.io/docs/akka/current/project/examples.html)
 * [Akka typed actors](https://doc.akka.io/docs/akka/current/typed/actors.html)
