@@ -24,6 +24,6 @@ jobs:
             ${{ runner.os }}-maven-
             ${{ runner.os }}-
       - name: Build
-        run: cd $GITHUB_WORKSPACE/akka-cluster-typed-java-maven-example && ./mvnw
+        run: cd $GITHUB_WORKSPACE/prerequisites/akka-cluster-typed-java-maven-example && ./mvnw
       - name: Run
-        run: java -jar $GITHUB_WORKSPACE/akka-cluster-typed-java-maven-example/target/*-all.jar
+        run: java -jar $GITHUB_WORKSPACE/prerequisites/akka-cluster-typed-java-maven-example/target/*-all.jar
