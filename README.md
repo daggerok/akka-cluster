@@ -1,20 +1,20 @@
-# akka cluster [![ CI](https://github.com/daggerok/akka-cluster/workflows/%20CI/badge.svg)](https://github.com/daggerok/akka-cluster/actions?query=workflow%3A%22+CI%22)
+# akka cluster [![CI](https://github.com/daggerok/akka-cluster/workflows/%20CI/badge.svg)](https://github.com/daggerok/akka-cluster/actions?query=workflow%3A%22+CI%22)
 Akka cluster
 
 Status: IN PROGRESS...
 
 ## resources
 
-* https://doc.akka.io/docs/akka/current/additional/books.html
-* https://doc.akka.io/docs/akka/current/project/examples.html
-* https://doc.akka.io/docs/akka/current/typed/actors.html
-* https://doc.akka.io/docs/akka/2.6/project/migration-guide-2.5.x-2.6.x.html#materializer-changes
+* [Akka books and videos](https://doc.akka.io/docs/akka/current/additional/books.html)
+* [Akka examples projects](https://doc.akka.io/docs/akka/current/project/examples.html)
+* [Akka typed actors](https://doc.akka.io/docs/akka/current/typed/actors.html)
+* [Akka 2.5.x -> 2.6.x migration guide](https://doc.akka.io/docs/akka/2.6/project/migration-guide-2.5.x-2.6.x.html#materializer-changes)
 * [YouTube: What's New In Akka 2.6?](https://www.youtube.com/watch?v=ZWIryjFKcXo)
 * [YouTube: Introduction to Akka Actors with Java](https://www.youtube.com/watch?v=rIFqJxMJ1MM)
 * [YouTube: Akka Anti-Patterns, Goodbye: Six Features of Akka 2.6](https://www.youtube.com/watch?v=hHF66Dbr-9s)
-* https://doc.akka.io/docs/akka/current/serialization-jackson.html
+* [Akka serialization jackson](https://doc.akka.io/docs/akka/current/serialization-jackson.html)
 * https://www.youtube.com/watch?v=Ad2DyOn4dlY
-* https://github.com/akka/akka-samples/blob/be22b412fd/akka-sample-kafka-to-sharding-scala/processor/src/main/scala/sample/sharding/kafka/UserEvents.scala
+* [GitHub: akka/akka-samples](https://github.com/akka/akka-samples/blob/be22b412fd/akka-sample-kafka-to-sharding-scala/processor/src/main/scala/sample/sharding/kafka/UserEvents.scala)
 * https://www.youtube.com/watch?v=xWuOGqmR7ow
 * https://www.youtube.com/watch?v=6ECsFlNNIAM
 * https://www.youtube.com/watch?v=HDsvbaLLa2I
