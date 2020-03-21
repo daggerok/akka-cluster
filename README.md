@@ -19,7 +19,7 @@ Status: IN PROGRESS...
 * https://www.youtube.com/watch?v=xWuOGqmR7ow
 * https://www.youtube.com/watch?v=6ECsFlNNIAM
 * https://www.youtube.com/watch?v=HDsvbaLLa2I
-* https://www.youtube.com/watch?v=yPutaNumjNw
+* [Building a Distributed Application for the Cloud with Akka Clustering and Java 8](https://www.youtube.com/watch?v=yPutaNumjNw)
 
 ## other repos
 
